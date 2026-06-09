@@ -5,6 +5,7 @@ from typing import Optional, Dict, Any, List
 from dataclasses import dataclass, field
 from enum import Enum
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 
 class AgentSpecialty(Enum):
@@ -90,7 +91,7 @@ class BaseAgent(ABC):
         self.conversation_history.append({
             "role": role,
             "content": content,
-            "timestamp": str(__import__("datetime").datetime.now())
+            "timestamp": datetime.now().isoformat()
         })
     
     def get_specialty_relevance(self, keywords: List[str]) -> float:
